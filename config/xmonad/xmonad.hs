@@ -40,6 +40,13 @@ main = do
 		-- Application Launching
              , ((mod4Mask, xK_v), spawn "code" >> return ())
              , ((mod4Mask, xK_c), spawn "chromium-browser" >> return ())
+
+		-- Browser
+             , ((mod4Mask, xK_g), spawn "chromium-browser https://github.com/AlexREvans" >> return ())
+             , ((mod4Mask, xK_r), spawn "chromium-browser https://reddit.com" >> return ())
+             , ((mod4Mask, xK_b), spawn "chromium-browser https://www.bbc.co.uk/news/business" >> return ())
+             , ((mod4Mask, xK_m), spawn "chromium-browser https://mail.google.com" >> return ())
+             , ((mod4Mask, xK_k), spawn "chromium-browser http://xmonad.org/manpage.html" >> return ())
              
 		-- Power Control
 --             , ((modShift, xK_l), spawn "gnome-screensaver-command -a" >> return ())
