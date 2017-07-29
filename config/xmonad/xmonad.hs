@@ -38,7 +38,8 @@ main = do
              , ((modShift, xK_h), sendMessage ToggleStruts)
 
 		-- Application Launching
-             , ((mod4Mask, xK_c), spawn "code" >> return ())
+             , ((mod4Mask, xK_v), spawn "code" >> return ())
+             , ((mod4Mask, xK_c), spawn "chromium-browser" >> return ())
              
 		-- Power Control
 --             , ((modShift, xK_l), spawn "gnome-screensaver-command -a" >> return ())
