@@ -1,5 +1,8 @@
 #!/bin/bash
 
+add-apt-repository -y ppa:git-core/ppa
+apt-get update
+
 apt-get install -y git chromium-browser
 
 sudo -H -u vagrant git config --global user.email "AlexREvans@users.noreply.github.com"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Europe/London" > /etc/timezone
-dpkg-reconfigure --frontent noninteractive tzdata
+dpkg-reconfigure --frontend noninteractive tzdata
 
 apt-get update -y
 
