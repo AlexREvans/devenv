@@ -8,6 +8,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "bootstrap/code.sh"
   config.vm.provision :shell, path: "bootstrap/docker.sh"
   config.vm.provision :shell, path: "bootstrap/complete.sh"
+
+  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+  config.vm.provision "file", source: "~/.ssh", destination: ".ssh"
+
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
     vb.cpus = 4
