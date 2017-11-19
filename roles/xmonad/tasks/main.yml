@@ -1,0 +1,44 @@
+
+- name: Install Xmonad, Xmobar & dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - xinit
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
+    - virtualbox-guest-x11
+    - xmonad 
+    - xmobar 
+    - suckless-tools 
+    - feh
+
+- name: Allow anyone to start x session
+  shell: sed 's/allowed_users=.*/allowed_users=anybody/' -i /etc/X11/Xwrapper.config
+
+- name: Install Virtualbox helpers
+  shell: VBoxClient --"{{ item }}"
+  with_items:
+    - clipboard
+    - draganddrop
+    - display
+    - checkhostversion
+    - seamless
+
+- name: Make ~/.xmonad 
+  file: 
+    name: /home/vagrant/.xmonad
+    state: directory
+
+- name: Link xmonad config
+  file:
+    src: /vagrant/config/xmonad/xmonad.hs
+    dest: /home/vagrant/.xmonad/xmonad.hs
+    state: link
+
+
+- name: Link xmobar config
+  file:
+    src: /vagrant/config/xmonad/.xmobarrc
+    dest: /home/vagrant/.xmobarrc
+    state: link

@@ -1,0 +1,4 @@
+- name: Install latest chromium
+  apt:
+    name: chromium-browser
+    state: latest

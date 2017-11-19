@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  roles: 
+    - git
+    - docker
+    - gnometerm
+    - settings
+    - vscode
+    - chromium
+    - zsh
+    - xmonad

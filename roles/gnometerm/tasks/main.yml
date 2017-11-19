@@ -1,0 +1,10 @@
+- name: Install latest gnome terminal
+  apt:
+    name: gnome-terminal
+    state: latest
+
+- name: Link gnome terminal config
+  file:
+    src: /vagrant/config/gnome/.gconf
+    dest: /home/vagrant/.gconf
+    state: link

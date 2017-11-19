@@ -1,0 +1,15 @@
+
+
+- name: X
+  apt:
+    name: zsh
+    state: latest
+
+- name: X
+  user:
+    name: vagrant
+    shell: /usr/bin/zsh
+
+- name: Update repositories cache and install "foo" package
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  become: vagrant

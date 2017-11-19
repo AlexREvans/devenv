@@ -1,0 +1,39 @@
+- name: Add Docker key
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+- name: Add Docker CE repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Install Docker CE
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: Add vagrant to docker group
+  user:
+    name: vagrant
+    groups: docker
+
+- name: Capture uname -m
+  shell: uname -m
+  register: unamem
+
+- name: Capture uname -s
+  shell: uname -s
+  register: unames
+
+- stat: path=/usr/local/bin/docker-compose
+  register: composeinstalled
+
+- name: Install Docker Compose
+  shell: curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-"{{ unames.stdout }}"-"{{ unamem.stdout }}" -o /usr/local/bin/docker-compose
+  become: vagrant
+  when: composeinstalled.stat.exists == False
+
+- name: Set Docker Compose permissions
+  file:
+    name: /usr/local/bin/docker-compose
+    mode: 775

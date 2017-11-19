@@ -1,0 +1,10 @@
+- name: Install x keyboard utils
+  apt:
+    name: x11-xkb-utils
+    state: present 
+
+- name: Set timezone
+  shell: "{{ item }}"
+  with_items: 
+    - echo "Europe/London" > /etc/timezone
+    - dpkg-reconfigure --frontend noninteractive tzdata
