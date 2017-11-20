@@ -2,6 +2,7 @@
   apt:
     name: gnome-terminal
     state: latest
+  become: true
 
 - name: Link gnome terminal config
   file:

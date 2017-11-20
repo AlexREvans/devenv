@@ -2,9 +2,11 @@
   apt:
     name: x11-xkb-utils
     state: present 
+  become: true
 
 - name: Set timezone
   shell: "{{ item }}"
+  become: true
   with_items: 
     - echo "Europe/London" > /etc/timezone
     - dpkg-reconfigure --frontend noninteractive tzdata

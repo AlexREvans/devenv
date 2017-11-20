@@ -1,15 +1,17 @@
 
 
-- name: X
+- name: Install latest zsh
   apt:
     name: zsh
     state: latest
+  become: true
 
-- name: X
+- name: Set vagrant user shell to zsh
   user:
     name: vagrant
     shell: /usr/bin/zsh
+  become: true
 
-- name: Update repositories cache and install "foo" package
+- name: Install oh my zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  become: vagrant
+  become: true

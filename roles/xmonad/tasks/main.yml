@@ -3,6 +3,7 @@
   apt:
     name: "{{ item }}"
     state: latest
+  become: true
   with_items:
     - xinit
     - virtualbox-guest-dkms
@@ -15,6 +16,7 @@
 
 - name: Allow anyone to start x session
   shell: sed 's/allowed_users=.*/allowed_users=anybody/' -i /etc/X11/Xwrapper.config
+  become: true
 
 - name: Install Virtualbox helpers
   shell: VBoxClient --"{{ item }}"
