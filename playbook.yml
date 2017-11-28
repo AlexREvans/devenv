@@ -4,10 +4,5 @@
   roles: 
     - git
     - docker
-    - gnometerm
     - settings
-    - vscode
-    - chromium
-    - zsh
-    - xmonad
     - dotfiles
